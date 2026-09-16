@@ -2,6 +2,7 @@
 #include <fstream>
 #include <sstream>
 #include "ColaPacientes.hpp"
+#include "ListaServicios.hpp"
 using namespace std;
 
 void lectura(ColaPacientes &cola) {
@@ -44,7 +45,8 @@ void lectura(ColaPacientes &cola) {
 
 int main() {
     
-    ColaPacientes cola;   
+    ColaPacientes cola;  
+    ListaServicios listaServicios; 
     lectura(cola);        
 
     cola.mostrar(); 
@@ -59,9 +61,25 @@ int main() {
     cin >> opcion;
 
     switch (opcion) {
-            case 1:
-                // Lógica de atender paciente
+            case 1:{
+                cola.mostrar();
+                int cantidad;
+                cout << "indique la cantidad de pacientes a atender: ";
+                cin >> cantidad;
+
+                for(int i = 0; i < cantidad; i++){
+                    Paciente* pacienteAtendido = cola.desencolar();
+                    if(pacienteAtendido != nullptr){
+                        cout << "Atendiendo paciente: " << pacienteAtendido->getNombre() << endl;
+                        listaServicios.insertar(pacienteAtendido->getServicio(), pacienteAtendido);
+                    }else{
+                        cout << "No hay mas pacientes para atender." << endl;
+                        break;
+                    }
+                    
+                }
                 break;
+            }
             case 2:
                 // Lógica de ver departamento
                 break;
@@ -79,4 +97,6 @@ int main() {
     
     return 0;
 }
+
+
 
