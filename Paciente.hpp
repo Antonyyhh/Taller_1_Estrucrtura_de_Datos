@@ -1,4 +1,4 @@
-
+#pragma once
 #include "Persona.hpp"
 #include <iostream>
 using namespace std;

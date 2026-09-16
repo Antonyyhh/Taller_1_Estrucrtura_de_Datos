@@ -9,12 +9,12 @@
     "-Wall",
     "-Wextra",
     "-g3",
-    "${fileDirname}\\*.cpp",
+    "${workspaceFolder}\\*.cpp",
     "-o",
-    "${fileDirname}\\output\\main.exe"
+    "${workspaceFolder}\\main.exe"
 ],
             "options": {
-                "cwd": "${fileDirname}"
+                "cwd": "${workspaceFolder}"
             },
             "problemMatcher": [
                 "$gcc"
