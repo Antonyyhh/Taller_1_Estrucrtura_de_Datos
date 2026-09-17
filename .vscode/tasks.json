@@ -2,17 +2,21 @@
     "tasks": [
         {
             "type": "cppbuild",
-            "label": "C/C++: g++.exe compilar archivo activo",
+            "label": "Build proyecto",
             "command": "C:\\TDM-GCC-64\\bin\\g++.exe",
             "args": [
-    "-fdiagnostics-color=always",
-    "-Wall",
-    "-Wextra",
-    "-g3",
-    "${workspaceFolder}\\*.cpp",
-    "-o",
-    "${workspaceFolder}\\main.exe"
-],
+                "-fdiagnostics-color=always",
+                "-Wall",
+                "-Wextra",
+                "-g3",
+                "${workspaceFolder}\\main.cpp",
+                "${workspaceFolder}\\ColaPacientes.cpp",
+                "${workspaceFolder}\\ListaServicio.cpp",
+                "${workspaceFolder}\\Paciente.cpp",
+                "${workspaceFolder}\\Persona.cpp",
+                "-o",
+                "${workspaceFolder}\\output\\main.exe"
+            ],
             "options": {
                 "cwd": "${workspaceFolder}"
             },

@@ -1,0 +1,8 @@
+{
+    "C_Cpp.errorSquiggles": "disabled",
+    "code-runner.runInTerminal": true,
+    "code-runner.fileDirectoryAsCwd": false,
+    "code-runner.executorMap": {
+        "cpp": "cd /d \\\"$workspaceRoot\\\" && \\\"C:\\\\TDM-GCC-64\\\\bin\\\\g++.exe\\\" -fdiagnostics-color=always -Wall -Wextra -g3 \\\"main.cpp\\\" \\\"ColaPacientes.cpp\\\" \\\"ListaServicio.cpp\\\" \\\"Paciente.cpp\\\" \\\"Persona.cpp\\\" -o \\\"output\\\\main.exe\\\" && \\\"output\\\\main.exe\\\""
+    }
+}
