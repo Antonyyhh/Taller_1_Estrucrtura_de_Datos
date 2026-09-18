@@ -4,6 +4,7 @@
 #include <stdexcept>
 #include "ColaPacientes.hpp"
 #include "ListaServicios.hpp"
+#include "PilaHistorial.hpp"
 using namespace std;
 
 void lectura(ColaPacientes &cola) {
@@ -20,7 +21,9 @@ void lectura(ColaPacientes &cola) {
         if (linea.empty()) {
             continue;
         }
-
+        if(!linea.empty() && linea.back() == '\r') {
+            linea.pop_back();
+        }
         stringstream ss(linea);
         string parte;
         int contador = 0;
@@ -83,14 +86,13 @@ void mostrarDepartamentos(ListaServicios& listaServicios, int opcion) {
         cout << "No se encontró el departamento de Urgencias." << endl;
     }
 }
-void mostrarHistorial(ListaServicios& listaServicios) {
-    listaServicios.mostrarHistorial();
-}
+
 
 int main() {
     
     ColaPacientes cola;  
     ListaServicios listaServicios; 
+    PilaHistorial historial;
     lectura(cola);        
 
     cola.mostrar(); 
@@ -116,6 +118,8 @@ int main() {
                     if(pacienteAtendido != nullptr){
                         cout << "Atendiendo paciente: " << pacienteAtendido->getNombre() << endl;
                         listaServicios.insertar(pacienteAtendido->getServicio(), pacienteAtendido);
+                        string evento = "Nombre: " + pacienteAtendido->getNombre() + " | Edad: " + to_string(pacienteAtendido->getEdad()) + " | Departamento: " + pacienteAtendido->getServicio(); 
+                        historial.apilar(evento);
                     }else{
                         cout << "No hay mas pacientes para atender." << endl;
                         break;
@@ -147,7 +151,7 @@ int main() {
             case 3:
                 cout << "-------------------- Opcion 3 --------------------" << endl;
                 cout << "=== HISTORIAL DE ULTIMAS ATENCIONES DEL HOSPITAL ===" << endl;
-                mostrarHistorial(listaServicios);
+                historial.mostrarHistorial();
                 break;
             case 4:
                 cout << "Saliendo del sistema..." << endl;

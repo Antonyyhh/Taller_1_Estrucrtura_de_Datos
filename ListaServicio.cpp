@@ -20,7 +20,12 @@ ListaServicios::ListaServicios() : frente(nullptr), final(nullptr), tamaño(0) {
 }
 
 ListaServicios::~ListaServicios() {
-    
+    NodoServicio* actual = frente;
+    while(actual != nullptr){
+        NodoServicio* siguiente = actual->siguiente;
+        delete actual;
+        actual = siguiente;
+    }
 }
 
 NodoServicio* ListaServicios::buscarServicio(string nombre){
@@ -44,19 +49,3 @@ void ListaServicios::insertar(string nombre, Paciente* paciente){
     }
 }
 
-void ListaServicios::mostrarHistorial() {
-    NodoServicio* actual = frente;
-    bool hayPacientes = false;
-
-    while (actual != nullptr) {
-        if (!actual->pacientes.estaVacia()) {
-            actual->pacientes.mostrarHistorial(actual->nombre);
-            hayPacientes = true;
-        }
-        actual = actual->siguiente;
-    }
-
-    if (!hayPacientes) {
-        cout << "No hay pacientes atendidos." << endl;
-    }
-}

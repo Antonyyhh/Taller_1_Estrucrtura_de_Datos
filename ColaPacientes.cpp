@@ -8,6 +8,7 @@ ColaPacientes::~ColaPacientes() {
     NodoCola* actual = frente;
     while (actual != nullptr) {
         NodoCola* siguiente = actual->siguiente;
+        delete actual->paciente;
         delete actual;
         actual = siguiente;
     }
@@ -65,13 +66,3 @@ void ColaPacientes::mostrar() {
     }
 }
 
-void ColaPacientes::mostrarHistorial(string departamento) {
-    NodoCola* actual = frente;
-
-    while (actual != nullptr) {
-        cout << "Nombre: " << actual->paciente->getNombre()
-             << " | Edad: " << actual->paciente->getEdad()
-             << " | Departamento: " << departamento << endl;
-        actual = actual->siguiente;
-    }
-}
