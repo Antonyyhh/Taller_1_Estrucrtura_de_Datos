@@ -33,12 +33,7 @@ void lectura(ColaPacientes &cola) {
             } else if (contador == 1) {
                 nombre = parte;
             } else if (contador == 2) {
-                try {
                     edad = stoi(parte);
-                } catch (const invalid_argument&) {
-                    cout << "Advertencia: se ignoro una linea con edad invalida." << endl;
-                    edad = -1;
-                }
             } else if (contador == 3) {
                 servicio = parte;
             }
@@ -88,6 +83,10 @@ void mostrarDepartamentos(ListaServicios& listaServicios, int opcion) {
         cout << "No se encontró el departamento de Urgencias." << endl;
     }
 }
+void mostrarHistorial(ListaServicios& listaServicios) {
+    listaServicios.mostrarHistorial();
+}
+
 int main() {
     
     ColaPacientes cola;  
@@ -146,7 +145,9 @@ int main() {
                 
             }
             case 3:
-                // Falta terminar esta
+                cout << "-------------------- Opcion 3 --------------------" << endl;
+                cout << "=== HISTORIAL DE ULTIMAS ATENCIONES DEL HOSPITAL ===" << endl;
+                mostrarHistorial(listaServicios);
                 break;
             case 4:
                 cout << "Saliendo del sistema..." << endl;

@@ -43,3 +43,20 @@ void ListaServicios::insertar(string nombre, Paciente* paciente){
         cout << "Servicio no encontrado: " << nombre << endl;
     }
 }
+
+void ListaServicios::mostrarHistorial() {
+    NodoServicio* actual = frente;
+    bool hayPacientes = false;
+
+    while (actual != nullptr) {
+        if (!actual->pacientes.estaVacia()) {
+            actual->pacientes.mostrarHistorial(actual->nombre);
+            hayPacientes = true;
+        }
+        actual = actual->siguiente;
+    }
+
+    if (!hayPacientes) {
+        cout << "No hay pacientes atendidos." << endl;
+    }
+}

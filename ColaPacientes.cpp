@@ -64,3 +64,14 @@ void ColaPacientes::mostrar() {
         contador++;
     }
 }
+
+void ColaPacientes::mostrarHistorial(string departamento) {
+    NodoCola* actual = frente;
+
+    while (actual != nullptr) {
+        cout << "Nombre: " << actual->paciente->getNombre()
+             << " | Edad: " << actual->paciente->getEdad()
+             << " | Departamento: " << departamento << endl;
+        actual = actual->siguiente;
+    }
+}

@@ -16,4 +16,5 @@ public:
     bool estaVacia();
     int getTamano();
     void mostrar();
+    void mostrarHistorial(string departamento);
 };
