@@ -29,6 +29,7 @@ void lectura(ColaPacientes &cola) {
         int contador = 0;
         string ID, nombre, servicio;
         int edad = 0;
+        bool lineaValida = true;
 
         while (getline(ss, parte, ';')) {
             if (contador == 0) {
@@ -36,16 +37,29 @@ void lectura(ColaPacientes &cola) {
             } else if (contador == 1) {
                 nombre = parte;
             } else if (contador == 2) {
+                try{
                     edad = stoi(parte);
+                }catch (const invalid_argument& e){
+                    cout << "Edad invalida, se omite la linea" << endl;
+                    lineaValida = false;
+                    break;
+                }
+                    
             } else if (contador == 3) {
                 servicio = parte;
             }
             contador++;
         }
 
-        if (contador >= 4 && edad >= 0) {
-            Paciente* p = new Paciente(ID, nombre, edad, servicio);
-            cola.encolar(p);
+        if (lineaValida && contador >= 4 && edad >= 0) {
+            if(cola.existeID(ID)){
+                cout << "ID duplicado, se omite la linea" << endl;
+                continue;
+            }else{
+                Paciente* p = new Paciente(ID, nombre, edad, servicio);
+                cola.encolar(p);
+            }
+            
         }
     }
 
@@ -116,11 +130,12 @@ int main() {
                 for(int i = 0; i < cantidad; i++){
                     Paciente* pacienteAtendido = cola.desencolar();
                     if(pacienteAtendido != nullptr){
-                        cout << "Atendiendo paciente: " << pacienteAtendido->getNombre() << endl;
+                        pacienteAtendido->mostrar();
+                        cout << "Paciente enviado a " + pacienteAtendido->getServicio() << endl;
                         listaServicios.insertar(pacienteAtendido->getServicio(), pacienteAtendido);
                         string evento = "Nombre: " + pacienteAtendido->getNombre() + " | Edad: " + to_string(pacienteAtendido->getEdad()) + " | Departamento: " + pacienteAtendido->getServicio(); 
                         historial.apilar(evento);
-                    }else{
+                    }else{  
                         cout << "No hay mas pacientes para atender." << endl;
                         break;
                     }

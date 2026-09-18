@@ -16,5 +16,6 @@ public:
     bool estaVacia();
     int getTamano();
     void mostrar();
+    bool existeID(string id);
     
 };

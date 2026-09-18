@@ -66,3 +66,15 @@ void ColaPacientes::mostrar() {
     }
 }
 
+bool ColaPacientes::existeID(string id) {
+    NodoCola* actual = frente;
+    while (actual != nullptr) {
+        if(actual->paciente->getId() == id) {
+            return true;
+
+        }
+        actual = actual->siguiente;
+    }
+    return false;
+}
+
