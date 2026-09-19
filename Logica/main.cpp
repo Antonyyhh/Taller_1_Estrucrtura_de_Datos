@@ -2,9 +2,9 @@
 #include <fstream>
 #include <sstream>
 #include <stdexcept>
-#include "ColaPacientes.hpp"
-#include "ListaServicios.hpp"
-#include "PilaHistorial.hpp"
+#include "../Dominio/ColaPacientes.hpp"
+#include "../Dominio/ListaServicios.hpp"
+#include "../Dominio/PilaHistorial.hpp"
 using namespace std;
 
 void lectura(ColaPacientes &cola) {
