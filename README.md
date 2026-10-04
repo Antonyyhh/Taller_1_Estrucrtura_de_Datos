@@ -8,4 +8,4 @@ El programa muestra un menu con las siguientes opciones : 1. Atender pacientes, 
 
 Ademas el archivo de texto "pacientes.txt" debe tener el siguiente formato: ID;Nombre;Edad;Servicio
 
-Las instrucciones de ejecucion de nuestro codigo serian que al empezar a ejecutar nuestro codigo se muestra un menu con las 4 instrucciones anteriores. Atender pacientes agrega a los pacientes a una cola de pacientes para ser atendidos, ver departamento permite saber donde se encuentra cada paciente dependiendo de su tratamientos. Revisar el historial es como dice revisar que cliente se atendio y salir acaba de ejecutar el codigo. Y para compilar este codigo no se requiere de librerias externas por lo que solo se debe ejecutar desde la raiz del proyecto.
+Para poder compilar nuestro codigo hay que ingresar "g++ -std=c++17 -Wall -Wextra Dominio/.cpp Logica/.cpp -o hospital" en la terminal y para ejecutar el codigo hay que ingresar e bash .\hospital
